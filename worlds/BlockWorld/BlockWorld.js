@@ -11,23 +11,23 @@ world.preloadSound("create.ogg");
 world.preloadSound("destroy.ogg");
 
 // Create the ground
-var ground = new Mesh(); // for the ground
+ground = new Mesh(); // for the ground
 ground.penetratable = false;
 ground.impactSound = "grass";
 ground.colorTop = new Color(0x00E000); // top green, like grass
 ground.color = new Color(0x404000); // all others sides brown
 ground.size = [1000, 1000, 250];
 ground.position = [0, 0, 0];
-var meshSize = 100;
+meshSize = 100;
 ground.meshSize = [meshSize, meshSize];
 ground.textureTop = new Texture("moss", 0.005, 0.005);
 
 // - add a few hills and peaks
-var ruggedness = Math.random();
-for (var i = 0; i < 150 * ruggedness; i++) {
-	var x = meshSize * Math.random();
-	var y = meshSize * Math.random();
-	var baseSize = meshSize * Math.random() * (1 - ruggedness) + 5;
+ruggedness = Math.random();
+for (i = 0; i < 150 * ruggedness; i++) {
+	x = meshSize * Math.random();
+	y = meshSize * Math.random();
+	baseSize = meshSize * Math.random() * (1 - ruggedness) + 5;
 	if (Math.random() < ruggedness) {
 		ground.createPeak(x, y, Math.random() * 0.1, baseSize);
 	} else {
@@ -39,7 +39,7 @@ for (var i = 0; i < 150 * ruggedness; i++) {
 for (i = 0; i < 10; i++) {
 	x = Math.trunc(meshSize * Math.random());
 	y = Math.trunc(meshSize * Math.random());
-	var depth = Math.random() * 0.1;
+	depth = Math.random() * 0.1;
 	baseSize = Math.trunc(Math.random() * 20) + 10;
 	ground.createHill(x, y, -depth, baseSize);
 }
@@ -47,7 +47,7 @@ for (i = 0; i < 10; i++) {
 world.addObject(ground);
 
 // Create the water
-var water = new Translucency();
+water = new Translucency();
 water.name = "water";
 water.shadowless = true;
 water.penetratable = true;
@@ -90,7 +90,7 @@ water.transparencyCutout1 = 0.35;
 world.addObject(water);
 
 // a second phantom water layer for better visual effect
-var water2 = new Box();
+water2 = new Box();
 water2.shadowless = true;
 water2.phantom = true;
 water2.position = water.position;
@@ -104,14 +104,14 @@ water2.setTextureVelocityX(SIDE_TOP, 0.00005001);
 world.addObject(water2);
 
 // a third phantom water layer for even better looking water
-var water3 = water2.clone();
+water3 = water2.clone();
 water3.colorTop = new Color(0x80FF80);
 water2.textureTop = new Texture("water.png", 0.008, 0.008, 30);
 water3.setTextureVelocityY(SIDE_TOP, 0.00000001);
 world.addObject(water3);
 
 // Create the sky
-var sky = new Sphere();
+sky = new Sphere();
 sky.phantom = true;
 sky.shadowless = true;
 sky.position = [0, 0, -400];
@@ -128,7 +128,7 @@ sky.transparencySide1 = 0.25;
 world.addObject(sky);
 
 // Create air (to provide friction when falling and balloon floating)
-var air = new Cylinder();
+air = new Cylinder();
 air.penetratable = true;
 air.position = [0, 0, 1000+water.position.z+water.size.z/2];  // need air to connect at water level
 air.size = [1000, 1000, 2000];
@@ -144,7 +144,7 @@ world.addObject(air);
  * Make the avatar jump.
  */
 function jump() {
-	var velocity = avatar.velocity;
+	velocity = avatar.velocity;
 	velocity.z = 5;
 	avatar.velocity = velocity;
 }
@@ -153,11 +153,11 @@ function jump() {
  * Make the avatar build a hill.
  */
 function pile() {
-	var cell = ground.getMeshCell(avatar.getPosition());
-	var i = Math.round(cell.x);
-	var j = Math.round(cell.y);
-	var avgHeight = (ground.getMeshPoint(i, j) +ground.getMeshPoint(i+1, j) + ground.getMeshPoint(i, j+1) + ground.getMeshPoint(i+1, j+1)) / 4; 
-	var k = Math.round(250 * avgHeight) / 250 + 0.004;
+	cell = ground.getMeshCell(avatar.getPosition());
+	i = Math.round(cell.x);
+	j = Math.round(cell.y);
+	avgHeight = (ground.getMeshPoint(i, j) +ground.getMeshPoint(i+1, j) + ground.getMeshPoint(i, j+1) + ground.getMeshPoint(i+1, j+1)) / 4; 
+	k = Math.round(250 * avgHeight) / 250 + 0.004;
 	ground.setMeshPoint(i, j, k);
 	ground.setMeshPoint(i + 1, j, k);
 	ground.setMeshPoint(i, j + 1, k);
@@ -169,11 +169,11 @@ function pile() {
  * Make the avatar dig.
  */
 function dig() {
-	var cell = ground.getMeshCell(avatar.getPosition());
-	var i = Math.round(cell.x);
-	var j = Math.round(cell.y);
-	var avgHeight = (ground.getMeshPoint(i, j) +ground.getMeshPoint(i+1, j) + ground.getMeshPoint(i, j+1) + ground.getMeshPoint(i+1, j+1)) / 4; 
-	var k = Math.round(250 * avgHeight) / 250 - 0.004;
+	cell = ground.getMeshCell(avatar.getPosition());
+	i = Math.round(cell.x);
+	j = Math.round(cell.y);
+	avgHeight = (ground.getMeshPoint(i, j) +ground.getMeshPoint(i+1, j) + ground.getMeshPoint(i, j+1) + ground.getMeshPoint(i+1, j+1)) / 4; 
+	k = Math.round(250 * avgHeight) / 250 - 0.004;
 	ground.setMeshPoint(i, j, k);
 	ground.setMeshPoint(i + 1, j, k);
 	ground.setMeshPoint(i, j + 1, k);
@@ -197,7 +197,7 @@ function float() {
 	console.info("Avatar density = "+avatar.density);
 }
 
-var blocks = [];
+blocks = [];
 
 function deleteBlock() {
 	world.removeObject(this);
@@ -209,14 +209,14 @@ function deleteBlock() {
  * already exists at the location. The type of block is chosen by a dialog.
  */
 function createBlock() {
-	var position = getPositionAheadOfAvatar();
-	var block = getBlockAtPosition(position);
+	position = getPositionAheadOfAvatar();
+	block = getBlockAtPosition(position);
 	if (block != null) {
 		world.removeObject(block);
 		blocks.splice(blocks.indexOf(block), 1);
 		world.playSound("destroy.ogg", 1);
 	} else {
-		var blockType = select("Select a block type", 
+		blockType = select("Select a block type", 
 				["brick", "firepit", "fountain", "plant"],
 				["brick.jpg", "fire.png", "drop.png", "plant.png"]);
 		if (blockType == "brick" ) {
@@ -244,11 +244,11 @@ function createBlock() {
 			block.hollow = 0.5;
 			block.pickable = true;
 			block.actions = [new Action("delete", deleteBlock)];
-			var rocks = new Box();
+			rocks = new Box();
 			rocks.size = new Vector(1, 1, 0.6);
 			rocks.texture = new Texture("gravel.jpg", 0.5, 0.5);
 			block.addChild(rocks);
-			var fire = new ParticleEmitter();
+			fire = new ParticleEmitter();
 			fire.position = new Vector(0, 0, 0.5);
 			block.addChild(fire);
 			fire.particleImage = "fire.png";
@@ -279,7 +279,7 @@ function createBlock() {
 			rocks.size = new Vector(1, 1, 0.6);
 			rocks.texture = new Texture("gravel.jpg", 0.5, 0.5);
 			block.addChild(rocks);
-			var fountain = new ParticleEmitter();
+			fountain = new ParticleEmitter();
 			fountain.position = new Vector(0, 0, 0.25);
 			block.addChild(fountain);
 			fountain.particleImage = "drop.png";
@@ -307,11 +307,11 @@ function createBlock() {
 			block.hollow = 0.5;
 			block.pickable = true;
 			block.actions = [new Action("delete", deleteBlock)];
-			var dirt = new Box();
+			dirt = new Box();
 			dirt.size = new Vector(1, 1, 0.6);
 			dirt.texture = new Texture("dirt.jpg", 0.5, 0.5);
 			block.addChild(dirt);
-			var plant = new Plant();
+			plant = new Plant();
 			plant.position = new Vector(0, 0, 1);
 			plant.size = new Vector(2, 2, 2);
 			plant.texture = new Texture("plant.png");
@@ -328,9 +328,9 @@ function createBlock() {
  * Figure out the block block at position or return null if no block exists.
  */
 function getBlockAtPosition(position) {
-	var atPosition = false;
-	for (var i = 0; i < blocks.length; i++) {
-		var block = blocks[i];
+	atPosition = false;
+	for (i = 0; i < blocks.length; i++) {
+		block = blocks[i];
 		if (block == null) {
 			return null;
 		}
@@ -345,19 +345,19 @@ function getBlockAtPosition(position) {
  * Figure out a good location to place a block.
  */
 function getPositionAheadOfAvatar() {
-	var position = avatar.position;
+	position = avatar.position;
 	position.x = Math.round(position.x / 2) * 2;
 	position.y = Math.round(position.y / 2) * 2;
 	position.z = Math.round(position.z / 2 - 0.5) * 2 + 1.25;
 
 	// Check the block directly ahead of the avatar
-	var x = 0;
+	x = 0;
 	if (-Math.sin(Math.PI / 180.0 * avatar.rotation.yaw) > 0.7) {
 		x = 2;
 	} else if (-Math.sin(Math.PI / 180.0 * avatar.rotation.yaw) < -0.7) {
 		x = -2;
 	}
-	var y = 0;
+	y = 0;
 	if (-Math.cos(Math.PI / 180.0 * avatar.rotation.yaw) > 0.7) {
 		y = 2;
 	} else if (-Math.cos(Math.PI / 180.0 * avatar.rotation.yaw) < -0.7) {
@@ -370,12 +370,12 @@ function getPositionAheadOfAvatar() {
 }
 
 // setup actions for the avatar
-var jumpAction = new Action("Jump", jump);
-var pileAction = new Action("Pile", pile);
-var digAction = new Action("Dig", dig);
-var sinkAction = new Action("Sink", sink);
-var floatAction = new Action("Float", float);
-var createBlockAction = new Action("Block", createBlock);
+jumpAction = new Action("Jump", jump);
+pileAction = new Action("Pile", pile);
+digAction = new Action("Dig", dig);
+sinkAction = new Action("Sink", sink);
+floatAction = new Action("Float", float);
+createBlockAction = new Action("Block", createBlock);
 avatar.actions = [jumpAction, pileAction, digAction, sinkAction, floatAction, createBlockAction];
 
 // Position the avatar

@@ -1,6 +1,6 @@
 // A block avatar, somewhat mindcrafty. 
 
-var skin = "adventurer-steve.png";
+skin = "adventurer-steve.png";
 
 avatar = new Sphere(); // the avatar will be in this sphere
 avatar.name = "Blockhead";
@@ -11,7 +11,7 @@ avatar.elasticity = -0.5;
 //Make the avatar lighter than water but heavier than air, so it floats well to swim.
 avatar.density = 0.25;
 
-var body = new Box();
+body = new Box();
 body.name = "torso";
 body.size = new Vector(0.5, 0.25, 0.75);
 body.gluedToParent = true;
@@ -24,7 +24,7 @@ body.textureSide4 = new Texture(skin, 16, 6, 0, 7, 2, true);
 body.textureTop = new Texture(skin, 8, 16, 0, 2.5, 4, true);
 body.textureBottom = new Texture(skin, 8, 16, 0, 4, 4, true);
 
-var head = new Box();
+head = new Box();
 head.name = "head";
 head.size = new Vector(0.5, 0.5, 0.5);
 body.addChild(head);
@@ -37,13 +37,13 @@ head.textureSide4 = new Texture(skin, 8, 8, 0, 2, 1, true);
 head.textureTop = new Texture(skin, 8, 8, 0, 1, 0, true);
 head.textureBottom = new Texture(skin, 8, 8, 0, 2, 0, true);
 
-var focus = new Box();
+focus = new Box();
 focus.name = "focus";
 focus.transparency = 1.0;
 focus.position = new Vector(0, -0.25, 0.125);
 head.addChild(focus);
 
-var leftArm = new Box();
+leftArm = new Box();
 leftArm.name = "left arm";
 leftArm.size = new Vector(0.25, 0.25, 0.75);
 body.addChild(leftArm);
@@ -56,7 +56,7 @@ leftArm.textureSide4 = new Texture(skin, 16, 6, 0, 10, 5, true);
 leftArm.textureTop = new Texture(skin, 16, 16, 0, 9, 12, true);
 leftArm.textureBottom = new Texture(skin, 16, 16, -90, 10, 12, true);
 
-var rightArm = new Box();
+rightArm = new Box();
 rightArm.name = "right arm";
 rightArm.size = new Vector(0.25, 0.25, 0.75);
 body.addChild(rightArm);
@@ -69,7 +69,7 @@ rightArm.textureSide4 = new Texture(skin, 16, 6, 0, 12, 2, true);
 rightArm.textureTop = new Texture(skin, 16, 16, 0, 11, 4, true);
 rightArm.textureBottom = new Texture(skin, 16, 16, -90, 12, 4, true);
 
-var leftLeg = new Box();
+leftLeg = new Box();
 leftLeg.name = "left leg";
 leftLeg.size = new Vector(0.25, 0.25, 0.75);
 body.addChild(leftLeg);
@@ -82,7 +82,7 @@ leftLeg.textureSide4 = new Texture(skin, 16, 6, 0, 6, 5, true);
 leftLeg.textureTop = new Texture(skin, 16, 16, 0, 5, 12, true);
 leftLeg.textureBottom = new Texture(skin, 16, 16, -90, 6, 12, true);
 
-var rightLeg = new Box();
+rightLeg = new Box();
 rightLeg.name = "right leg";
 rightLeg.size = new Vector(0.25, 0.25, 0.75);
 body.addChild(rightLeg);

@@ -1,8 +1,8 @@
 // Happy, the egg avatar
 
-var skin = avatarCustomization.getCustomProperty("skin", "happy");
+skin = avatarCustomization.getCustomProperty("skin", "happy");
 
-var avatar = new Sphere();
+avatar = new Sphere();
 avatar.color = new Color(1, 1, 1);  //white
 avatar.name = "Happy";
 avatar.size = [1, 1, 1];
