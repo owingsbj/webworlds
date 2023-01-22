@@ -242,6 +242,7 @@ function stopBlock() {
 function deleteBlock() {
 	world.removeObject(this);
 	blocks.splice(blocks.indexOf(this), 1);
+	world.status = "" + blocks.length + " blocks";
 }
 
 /**
