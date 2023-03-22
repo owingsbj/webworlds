@@ -11,3 +11,6 @@ avatar.texture = new Texture(skin+"_skin.png");
 
 //Make the egg quite a bit lighter than water but heavier than air, so it floats well in water.
 avatar.density = 0.25;
+
+avatar.addBehavior(new SquishyBehavior());
+

@@ -1,3 +1,4 @@
 Egg
-Humanoid
 Blockhead
+Humanoid
+Animoid
