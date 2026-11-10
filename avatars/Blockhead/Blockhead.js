@@ -79,7 +79,7 @@ buildAvatarBody = function() {
 
 reskin = function() {
     skin = avatarCustomization.getCustomProperty("skin", "steve_skin.png");
-    slim = avatarCustomization.getCustomProperty("slim", false) == true;
+    slim = avatarCustomization.getCustomProperty("slim", true) == true;
 
     var skinTexture = new Texture(skin);
     skinTexture.pixelated = true;
