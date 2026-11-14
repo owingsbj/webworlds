@@ -117,7 +117,7 @@ sky.shadowless = true;
 sky.position = [0, 0, -400];
 sky.size = [1000, 2500, 2500];
 sky.cutoutStart = 0.5; // half dome
-sky.rotation = [0, 90.0, 0];  // orient to a dome
+sky.rotation = [0, -90.0, 0];  // orient to a dome
 sky.hollow = 0.99;
 sky.textureInside1 = new Texture("sky.png", 0.25, 0.25);
 sky.setTextureVelocityY(SIDE_INSIDE1, 0.0005);
