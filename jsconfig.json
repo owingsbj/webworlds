@@ -4,5 +4,5 @@
     "lib": ["es5"],
     "checkJs": true
   },
-  "include": ["docs/webworld.d.ts", "docs/avatars/**/*.js", "docs/worlds/**/*.js"]
+  "include": ["webworld.d.ts", "avatars/**/*.js", "worlds/**/*.js"]
 }
