@@ -9,6 +9,7 @@ These variables and functions are available globally.
 #### Variables
 
 - **avatar** -- this is a 3D object representing the user.  It is set in the avatar script and is available in the world script.   You can also set the avatar to a different object in the world script initialization and it will be used as the avatar.
+- **avatarCustomization** -- an instance of the AvatarCustomization object for customizing avatars (see below).
 - **console** -- an instance of the Console object (see below).
 - **user** -- an instance of the user object for the user currently controlling the avatar.
 - **world** -- this is an instance of the World object as described below.
@@ -21,7 +22,16 @@ Some functions are available globally:
 - **confirm(*message*)** -- displays a message with OK and Cancel buttons.  Returns true if OK is pressed.  Otherwise returns false.
 - **prompt(*message*, *defaultText*)** -- displays a message and in input box initially filled in with defaultText.  Returns the entered text or null if cancelled.
 - **select(*message*, *selections*, *images*)** -- displays a selection dialog.  *selections* is an array of items (strings) to select from.  *images* are an option array of images to show to represent each item.
-)
+
+## AvatarCustomization
+
+The avatar cusomization object provides the ability to get and set customization properties for an avatar.  These properties are typically
+set in the avatar customizer and read during avatar creation.
+
+#### Methods
+
+- **getCustomProperty(*propertyName*, *defaultValue*) -- read the value of a customization property.
+- **setCustomProperty(*propertyName*, *value*) -- set the value of a customization property.
 
 ## Console
 

@@ -22,6 +22,8 @@ type MoveType = "explore" | "confront" | "drive" | "fly";
 
 /** The 3D object representing the user. Set in the avatar script; may be reassigned in the world script. */
 declare var avatar: Object3D;
+/** An object to use to get and set properties that can be used to customize the avatar. */
+declare var avatarCustomization: AvatarCustomization;
 /** WebWorld's console. */
 declare var console: Console;
 /** The user currently controlling the avatar. */
@@ -60,6 +62,17 @@ declare class Console {
     warn(message: any): void;
     /** Logs with "ERROR:" prefix. */
     error(message: any): void;
+}
+
+// ---------------------------------------------------------------------------
+// AvatarCustomization
+// ---------------------------------------------------------------------------
+
+declare class AvatarCustomization {
+    /** Returns the value of a customization property. */
+    getCustomProperty(propertyName: string, defaultValue: any) : any;
+    /** Sets the value of a customization property. */
+    setCustomProperty(propertyName: string, value: any) : void;
 }
 
 // ---------------------------------------------------------------------------
