@@ -39,10 +39,11 @@ declare function confirm(message: string): boolean;
 declare function prompt(message: string, defaultText?: string): string | null;
 /**
  * Show a selection dialog.
- * @param selections Strings to select from.
+ * @param selections Array of strings naming the items to select from.
  * @param images Optional images representing each item.
+ * @returns the index of the item selected or null if nothing was selected
  */
-declare function select(message: string, selections: string[], images?: string[]): any; // VERIFY return type
+declare function select(message: string, selections: string[], images?: string[]): number;
 
 // ---------------------------------------------------------------------------
 // Console

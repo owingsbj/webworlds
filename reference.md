@@ -21,7 +21,7 @@ Some functions are available globally:
 - **alert(*message*)** -- pop up a message box.  This can be useful for showing a message that the user must see.  Play will stop while the message is displayed.
 - **confirm(*message*)** -- displays a message with OK and Cancel buttons.  Returns true if OK is pressed.  Otherwise returns false.
 - **prompt(*message*, *defaultText*)** -- displays a message and in input box initially filled in with defaultText.  Returns the entered text or null if cancelled.
-- **select(*message*, *selections*, *images*)** -- displays a selection dialog.  *selections* is an array of items (strings) to select from.  *images* are an option array of images to show to represent each item.
+- **select(*message*, *selections*, *images*)** -- displays a selection dialog.  *selections* is an array of items (strings) to select from.  *images* are an option array of images to show to represent each item.  The index of the item selected is returned or null if no item was selected.   For an example of how to use this, look at <a href="avatars/Egg/EggCustomizer.js">EggCustomizer.js</a>
 
 ## AvatarCustomization
 
